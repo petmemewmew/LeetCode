@@ -7,24 +7,20 @@ class Solution(object):
 		"""
 		if numRows == 1:
 			return s
-		ans = []
-		for i in range(numRows):
-			ans.append("")
+		ans = ""
 		index = 0
-		direction = 1
-		for i in range(len(s)):
-			ans[index] += s[i]
-			if direction == 1:
-				if index != numRows - 1:
-					index += 1
-				else:
-					direction = -1
-					index -= 1
+		for i in range(numRows):
+			if i == 0 or i == numRows - 1:
+				while index < len(s):
+					ans += s[index]
+					index += 2 * numRows - 2
+				index = 1
 			else:
-				if index != 0:
-					index -= 1
-				else:
-					direction = 1
-					index += 1
-		ret = "".join(ans)
-		return ret
+				while index < len(s):
+					ans += s[index]
+					index += 2 * numRows - 2 * i -2
+					if index < len(s):
+						ans += s[index]
+						index += 2 * i
+				index = i + 1
+		return ans
