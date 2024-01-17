@@ -15,6 +15,6 @@ class Solution(object):
 			i = x % 10
 			ans += digit * i
 			x //= 10
-		if ans > 2 ** 31 - 1:
-			return 0
+			if ans > 2 ** 31 - 1:
+				return 0
 		return ans * flag
